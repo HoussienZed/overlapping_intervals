@@ -26,18 +26,14 @@ def merge_intervals_without_lambda(interval):
     # comparing the first element of each subarray and appending them to a merged list
     sorted_interval = []
     length = len(interval)
-    for i in range(length - 1, 0, -1):                         # i = 3 , 2, 1
-        # target index = 1
+    for i in range(length - 1, 0, -1):
         target_index = len(interval) - 1
-        for j in range(len(interval) - 2, -1, -1):                  # j = 0
-            # interval[1][0] = 2 > interval[0][0] =1 => true
+        for j in range(len(interval) - 2, -1, -1):
             if interval[target_index][0] > interval[j][0]:
-                continue                               # target_index = 1
+                continue
             else:
                 target_index = j
-                # sorted_interval = [[6, 8][3,4][2,5]]
         sorted_interval.append(interval[target_index])
-        # interval = [1,2][2,5]
         interval.pop(target_index)
     sorted_interval.append(interval[0])
     sorted_interval.reverse()
